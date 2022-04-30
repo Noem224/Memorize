@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct CardView: View {
+    @State private var isFaceUp = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let shape = RoundedRectangle(cornerRadius: 20)
+        ZStack {
+            if isFaceUp {
+                shape
+                    .fill()
+                    .foregroundColor(.white)
+                shape
+                    .stroke(lineWidth: 3)
+                Text("✈️")
+                    .font(.largeTitle)
+            } else {
+                shape
+                    .fill()
+            }
+        }
+        .onTapGesture { isFaceUp.toggle() }
     }
 }
 
