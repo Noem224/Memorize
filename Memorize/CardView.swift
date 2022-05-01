@@ -18,7 +18,7 @@ struct CardView: View {
                     .fill()
                     .foregroundColor(.white)
                 shape
-                    .stroke(lineWidth: 3)
+                    .strokeBorder(lineWidth: 3)
                 Text(content)
                     .font(.largeTitle)
             } else {

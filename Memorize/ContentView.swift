@@ -19,8 +19,7 @@ struct ContentView: View {
                             .aspectRatio(2/3, contentMode: .fit)
                     }
                 }
-                .padding(.horizontal)
-            .foregroundColor(.red)
+                .foregroundColor(.red)
             }
             Spacer()
             HStack {
@@ -31,6 +30,7 @@ struct ContentView: View {
             .font(.largeTitle)
             .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
     var remove: some View {
         Button(action: {
