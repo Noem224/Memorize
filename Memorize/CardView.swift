@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CardView: View {
+    let content: String
+    let shape = RoundedRectangle(cornerRadius: 20)
     @State private var isFaceUp = false
     var body: some View {
-        let shape = RoundedRectangle(cornerRadius: 20)
         ZStack {
             if isFaceUp {
                 shape
@@ -18,7 +19,7 @@ struct CardView: View {
                     .foregroundColor(.white)
                 shape
                     .stroke(lineWidth: 3)
-                Text("✈️")
+                Text(content)
                     .font(.largeTitle)
             } else {
                 shape
@@ -31,6 +32,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView()
+        CardView(content: "🚀")
     }
 }

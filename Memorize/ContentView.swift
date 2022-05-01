@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    let emojis = ["🚀","✈️"]
     var body: some View {
         HStack {
-            ForEach(0..<3) { _ in
-                CardView()
+            ForEach(emojis, id: \.self) { emoji in
+                CardView(content: emoji)
             }
         }
         .padding(.horizontal)
@@ -22,7 +23,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            
-            
     }
 }
