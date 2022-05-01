@@ -12,13 +12,17 @@ struct ContentView: View {
     @State private var emojiCounter = 2
     var body: some View {
         VStack {
-            HStack {
-                ForEach(emojis[0..<emojiCounter], id: \.self) { emoji in
-                    CardView(content: emoji)
+            ScrollView {
+                LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
+                    ForEach(emojis[0..<emojiCounter], id: \.self) { emoji in
+                        CardView(content: emoji)
+                            .aspectRatio(2/3, contentMode: .fit)
+                    }
                 }
-            }
-            .padding(.horizontal)
+                .padding(.horizontal)
             .foregroundColor(.red)
+            }
+            Spacer()
             HStack {
                 remove
                 Button(action: {}, label: {Text("Shuffle")})
