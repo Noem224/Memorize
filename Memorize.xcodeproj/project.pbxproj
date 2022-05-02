@@ -12,6 +12,9 @@
 		65588E60281AF80100D4D818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65588E5F281AF80100D4D818 /* Assets.xcassets */; };
 		65588E63281AF80100D4D818 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65588E62281AF80100D4D818 /* Preview Assets.xcassets */; };
 		65588E6A281AFF3C00D4D818 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65588E69281AFF3C00D4D818 /* CardView.swift */; };
+		6574637F281EF30D00CEC7E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6574637E281EF30D00CEC7E3 /* HomeView.swift */; };
+		65746381281EF3A900CEC7E3 /* CardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65746380281EF3A900CEC7E3 /* CardGridView.swift */; };
+		6583686128205EFE000075A5 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6583686028205EFE000075A5 /* MemoryGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		65588E5F281AF80100D4D818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65588E62281AF80100D4D818 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65588E69281AFF3C00D4D818 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		6574637E281EF30D00CEC7E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		65746380281EF3A900CEC7E3 /* CardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGridView.swift; sourceTree = "<group>"; };
+		6583686028205EFE000075A5 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +59,11 @@
 		65588E5A281AF7FF00D4D818 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				6583685F28205EDB000075A5 /* Model */,
+				6583685E28205EAC000075A5 /* View */,
 				65588E5B281AF7FF00D4D818 /* MemorizeApp.swift */,
-				65588E5D281AF7FF00D4D818 /* ContentView.swift */,
 				65588E5F281AF80100D4D818 /* Assets.xcassets */,
 				65588E61281AF80100D4D818 /* Preview Content */,
-				65588E69281AFF3C00D4D818 /* CardView.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -68,6 +74,25 @@
 				65588E62281AF80100D4D818 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6583685E28205EAC000075A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65588E5D281AF7FF00D4D818 /* ContentView.swift */,
+				6574637E281EF30D00CEC7E3 /* HomeView.swift */,
+				65588E69281AFF3C00D4D818 /* CardView.swift */,
+				65746380281EF3A900CEC7E3 /* CardGridView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6583685F28205EDB000075A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6583686028205EFE000075A5 /* MemoryGame.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6583686128205EFE000075A5 /* MemoryGame.swift in Sources */,
 				65588E5E281AF7FF00D4D818 /* ContentView.swift in Sources */,
+				65746381281EF3A900CEC7E3 /* CardGridView.swift in Sources */,
+				6574637F281EF30D00CEC7E3 /* HomeView.swift in Sources */,
 				65588E6A281AFF3C00D4D818 /* CardView.swift in Sources */,
 				65588E5C281AF7FF00D4D818 /* MemorizeApp.swift in Sources */,
 			);
