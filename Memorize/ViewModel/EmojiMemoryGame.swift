@@ -8,7 +8,7 @@
 ///Because EmojiMemoryGame is part of the UI (NOT the View), we need to import SwiftUI.
 import SwiftUI
 
-class EmojiMemoryGame {
+class EmojiMemoryGame: ObservableObject {
     
     static let emojis = ["🚀","✈️","🚄","🚜","🚁","🚚","🛸","🚡","⚓️"]
     
@@ -22,4 +22,6 @@ class EmojiMemoryGame {
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
     }
+    ///Example for previewing content
+    static let exampleCard = MemoryGame.Card(isFacedUp: true, isMatched: false, content: "🤪")
 }

@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct CardGridView: View {
-    let emojis = ["🚀","✈️","🚄","🚜","🚁","🚚","🛸","🚡","⚓️"]
-    @State private var emojiCounter = 2
+    @ObservedObject var viewModel: EmojiMemoryGame
     var body: some View {
-        VStack { 
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(emojis[0..<emojiCounter], id: \.self) { emoji in
-                        CardView(content: emoji)
-                            .aspectRatio(2/3, contentMode: .fit)
-                    }
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+                ForEach(viewModel.cards) { card in
+                    CardView(card: card)
+                        .aspectRatio(2/3, contentMode: .fit)
                 }
-                .foregroundColor(.red)
             }
+            .foregroundColor(.red)
         }
         .padding(.horizontal)
     }
@@ -28,6 +25,6 @@ struct CardGridView: View {
 
 struct CardGridView_Previews: PreviewProvider {
     static var previews: some View {
-        CardGridView()
+        CardGridView(viewModel: EmojiMemoryGame())
     }
 }

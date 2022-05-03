@@ -8,30 +8,28 @@
 import SwiftUI
 
 struct CardView: View {
-    let content: String
-    let shape = RoundedRectangle(cornerRadius: 20)
-    @State private var isFaceUp = false
+    let card: MemoryGame<String>.Card
     var body: some View {
+        let shape = RoundedRectangle(cornerRadius: 20)
         ZStack {
-            if isFaceUp {
+            if card.isFacedUp {
                 shape
                     .fill()
                     .foregroundColor(.white)
                 shape
                     .strokeBorder(lineWidth: 3)
-                Text(content)
+                Text(card.content)
                     .font(.largeTitle)
             } else {
                 shape
                     .fill()
             }
         }
-        .onTapGesture { isFaceUp.toggle() }
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(content: "🚀")
+        CardView(card: EmojiMemoryGame.exampleCard)
     }
 }

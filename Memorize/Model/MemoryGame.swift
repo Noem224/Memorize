@@ -13,17 +13,19 @@ struct MemoryGame<CardContent> {
     func choose(_ card: Card) {
         
     }
+    
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         self.cards = Array<Card>()
         ///Add numberOfPairsOfCards x 2 to cards array
-        for pairIndex in 0...numberOfPairsOfCards {
+        for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
             cards.append(Card(content: content))
             cards.append(Card(content: content))
         }
     }
     
-    struct Card {
+    struct Card: Identifiable {
+        var id = UUID()
         ///First time, the player is starting the game, the cards aren't faced up and the player doesn't has any matches yet.
         var isFacedUp: Bool = false
         var isMatched: Bool = false

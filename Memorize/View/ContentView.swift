@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel: EmojiMemoryGame
     var body: some View {
-        CardGridView()
+        CardGridView(viewModel: viewModel)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: EmojiMemoryGame())
     }
 }
