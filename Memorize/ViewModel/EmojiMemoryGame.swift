@@ -26,6 +26,4 @@ class EmojiMemoryGame: ObservableObject {
     static let exampleCard = MemoryGame.Card(isFacedUp: true, isMatched: false, content: "🤪")
     
     //MARK: - Intent(s)
-
-    
 }
