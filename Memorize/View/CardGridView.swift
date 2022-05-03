@@ -17,8 +17,8 @@ struct CardGridView: View {
                         .aspectRatio(2/3, contentMode: .fit)
                 }
             }
-            .foregroundColor(.red)
         }
+        .foregroundColor(.red)
         .padding(.horizontal)
     }
 }

@@ -22,6 +22,10 @@ class EmojiMemoryGame: ObservableObject {
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
     }
-    ///Example for previewing content
+    ///Example for previewing content in CardView.swift
     static let exampleCard = MemoryGame.Card(isFacedUp: true, isMatched: false, content: "🤪")
+    
+    //MARK: - Intent(s)
+
+    
 }
