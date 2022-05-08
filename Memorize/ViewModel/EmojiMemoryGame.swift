@@ -17,7 +17,7 @@ class EmojiMemoryGame: ObservableObject {
             emojis[pairIndex]
         }
     }
-    private var model: MemoryGame<String> = createMemoryGame()
+    @Published private var model: MemoryGame<String> = createMemoryGame()
     
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
@@ -26,4 +26,7 @@ class EmojiMemoryGame: ObservableObject {
     static let exampleCard = MemoryGame.Card(isFacedUp: true, isMatched: false, content: "🤪")
     
     //MARK: - Intent(s)
+    func choose(_ card: MemoryGame<String>.Card) {
+        model.choose(card)
+    }
 }
