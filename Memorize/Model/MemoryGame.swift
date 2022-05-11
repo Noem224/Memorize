@@ -10,29 +10,33 @@ import Foundation
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     
-    private var indexOfTheOneAndOnlyFaceUpCard: Int?
+    private var indexOfTheOneAndOnlyFaceUpCard: Int? {
+        ///To get the indexOfTheOneAndOnlyFaceUpCard, we filter through cards.indices to look for the cards, that are faced up and finaly return the oneAndOnly
+        get { cards.indices.filter({ cards[$0].isFacedUp }).oneAndOnly }
+        ///We forEach through the cards indices and set the faceUp property where index equals the newValue
+        set { cards.indices.forEach { cards[$0].isFacedUp = ($0 == newValue) } }
+    }
     
     mutating func choose(_ card: Card) {
         guard let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
-        !cards[chosenIndex].isFacedUp,
-        !cards[chosenIndex].isMatched else {return}
+              !cards[chosenIndex].isFacedUp,
+              !cards[chosenIndex].isMatched
+                
+        else {return}
+        
         if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
             if cards[potentialMatchIndex].content == cards[chosenIndex].content {
                 cards[chosenIndex].isMatched = true
                 cards[potentialMatchIndex].isMatched = true
             }
-            indexOfTheOneAndOnlyFaceUpCard = nil
+            cards[chosenIndex].isFacedUp.toggle()
         } else {
-            for index in cards.indices {
-                cards[index].isFacedUp = false
-            }
             indexOfTheOneAndOnlyFaceUpCard = chosenIndex
         }
-        cards[chosenIndex].isFacedUp.toggle()
     }
     
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
-        self.cards = Array<Card>()
+        self.cards = []
         ///Add numberOfPairsOfCards x 2 to cards array
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
@@ -42,13 +46,22 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     struct Card: Identifiable {
-        var id = UUID()
+        let id = UUID()
         ///First time, the player is starting the game, the cards aren't faced up and the player doesn't has any matches yet.
-        var isFacedUp: Bool = false
-        var isMatched: Bool = false
+        var isFacedUp = false
+        var isMatched = false
         
         ///Use generic, because we want an UI independent Model and in the future, the content may change from Emojis for example to Images etc.
-        var content: CardContent
+        let content: CardContent
     }
 }
 
+extension Array {
+    var oneAndOnly: Element? {
+        if self.count == 1 {
+            return self.first
+        } else {
+            return nil
+        }
+    }
+}

@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     var body: some View {
-        CardGridView(viewModel: viewModel)
+        EmojiMemoryGameView(game: viewModel)
     }
 }
 
