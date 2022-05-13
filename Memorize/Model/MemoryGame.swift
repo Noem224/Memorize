@@ -11,6 +11,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
+        
         ///To get the indexOfTheOneAndOnlyFaceUpCard, we filter through cards.indices to look for the cards, that are faced up and finaly return the oneAndOnly
         get { cards.indices.filter({ cards[$0].isFacedUp }).oneAndOnly }
         ///We forEach through the cards indices and set the faceUp property where index equals the newValue
@@ -43,6 +44,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content))
             cards.append(Card(content: content))
         }
+        cards.shuffle()
     }
     
     struct Card: Identifiable {
