@@ -12,31 +12,30 @@ struct CardView: View {
     let card: EmojiMemoryGame.Card
     
     var body: some View {
-        let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
         GeometryReader { geometry in
             ZStack {
-                if card.isFacedUp {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                    Text(card.content)
-                        .font(font(in: geometry.size))
-                } else if card.isMatched {
-                    shape.opacity(0.1)
-                } else {
-                    shape.fill()
-                }
+                Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: 110 - 90))
+                    .padding(5)
+                    .opacity(0.5)
+                Text(card.content)
+                    .rotationEffect(.degrees(card.isMatched ? 360: 0))
+                    .animation(.linear(duration: 1.0), value: card.isMatched)
+                    .font(.system(size: DrawingConstants.fontSize))
+                    .scaleEffect(scale(thatFits: geometry.size))
             }
+            .cardify(isFacedUp: card.isFacedUp)
         }
     }
-    
+    private func scale(thatFits size: CGSize) -> CGFloat {
+       return min(size.width, size.height) / (DrawingConstants.fontSize / DrawingConstants.fontScale)
+    }
     private func font(in size: CGSize) -> Font {
         Font.system(size: .minimum(size.width, size.height) * DrawingConstants.fontScale)
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 20
-        static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.7
+        static let fontSize: CGFloat = 32
     }
 }
 
