@@ -69,7 +69,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 }
             }
         }
-        
         ///Use generic, because we want an UI independent Model and in the future, the content may change from Emojis for example to Images etc.
         let content: CardContent
         

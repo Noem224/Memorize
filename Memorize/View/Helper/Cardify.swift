@@ -65,7 +65,6 @@ struct Cardify: ViewModifier, Animatable {
         static let lineWidth: CGFloat = 3
     }
 }
-
 /// add the cardify(isFaceUp:) func to the View protocol
 /// purely syntactic sugar for views that want to use our Cardify view modifier
 extension View {

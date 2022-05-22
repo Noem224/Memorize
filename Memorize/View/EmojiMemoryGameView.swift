@@ -30,7 +30,6 @@ struct EmojiMemoryGameView: View {
         }
         .padding()
     }
-    
     /// private state used to temporary track
     /// whether a card has been dealt or not
     /// contains id's of MemoryGame<String>.Cards
