@@ -35,7 +35,6 @@ struct Pie: Shape {
             x: center.x + radius * cos(startAngle.radians),
             y: center.y + radius * sin(startAngle.radians)
         )
-        
         /// we did this by creating a path and returning it
         /// but there is also a Path { } version we could have used
         var p = Path()
