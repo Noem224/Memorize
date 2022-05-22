@@ -163,6 +163,7 @@ struct EmojiMemoryGameView: View {
 }
 
 struct EmojiMemoryGameView_Previews: PreviewProvider {
+    /// flip over the first card just so our Preview is always showing one face up card
     static var previews: some View {
         let game = EmojiMemoryGame()
         game.choose(game.cards.first!)
