@@ -19,21 +19,24 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     mutating func choose(_ card: Card) {
-        guard let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
-              !cards[chosenIndex].isFacedUp,
-              !cards[chosenIndex].isMatched
-                
-        else {return}
-        
-        if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
-            if cards[potentialMatchIndex].content == cards[chosenIndex].content {
-                cards[chosenIndex].isMatched = true
-                cards[potentialMatchIndex].isMatched = true
+        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
+           !cards[chosenIndex].isFacedUp,
+           !cards[chosenIndex].isMatched
+        {
+            if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
+                if cards[potentialMatchIndex].content == cards[chosenIndex].content {
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true
+                }
+                cards[chosenIndex].isFacedUp.toggle()
+            } else {
+                indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
-            cards[chosenIndex].isFacedUp.toggle()
-        } else {
-            indexOfTheOneAndOnlyFaceUpCard = chosenIndex
         }
+    }
+    
+    mutating func shuffe() {
+        cards.shuffle()
     }
     
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
